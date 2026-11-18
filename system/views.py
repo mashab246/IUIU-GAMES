@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
@@ -115,3 +115,32 @@ def add_match_results_view(request):
     
     return render(request, "add_results.html", context)
 
+def edit_faculty_view(request, faculty_id):
+    message = ""
+    faculty = FacultyTeam.objects.get(id=faculty_id)
+
+    if request.method == 'POST':
+        facultyform = FacultyTeamForm(request.POST, instance=faculty)
+
+        if facultyform.is_valid():
+            facultyform.save()
+            message = "Faculty updated successfully"
+        else:
+            message = "Error updating the faculty, invalid data"
+    else:
+        facultyform = FacultyTeamForm(instance=faculty)
+
+    context = {
+        'form': facultyform,
+        'msg': message,
+        'faculty': faculty
+    }
+
+    return render(request, "edit_faculty.html", context)
+
+def delete_faculty_view(request, faculty_id):
+    faculty = FacultyTeam.objects.get(id=faculty_id)
+
+    faculty.delete()
+
+    return redirect(add_faculty_team_view)

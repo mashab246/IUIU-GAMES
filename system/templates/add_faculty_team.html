@@ -6,21 +6,25 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Register Faculty Team</h1>
     <form action="" method="post">
         {% csrf_token %}
-        {{form}}
+        {{ form }}
         <input type="submit">
     </form>
     {% if msg %}
-        {{msg}}
+    {{ msg }}
     {% endif %}
+
+    <br><br>
 
     <table>
         <tr>
-            <th>id</th>
-            <th>FacultyName</th>
-            <th>sportTeamm</th>
-            <th>no_of_players</th>
+            <th>Team ID</th>
+            <th>Faculty Name</th>
+            <th>Sport Type</th>
+            <th>Team Manager</th>
+            <th>Registered Players</th>
         </tr>
         {% for  facultyteam in facultyteams %}
         <tr>
@@ -29,6 +33,10 @@
             <td>{{facultyteam.sport_type}}</td>
             <td>{{facultyteam.team_manager}}</td>
             <td>{{facultyteam.no_of_registered_players}}</td>
+            <td>
+                <a href="{% url 'edit_faculty_page' facultyteam.id%}">Edit</a>
+                <a href="{% url 'delete_faculty_page' facultyteam.id%}" onclick="return('Are you sure you want to delete')">Delete</a>
+            </td>
         </tr>
         {% endfor %}
     </table>

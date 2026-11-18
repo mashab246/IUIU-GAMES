@@ -20,5 +20,7 @@ from system.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('faculty/', add_faculty_team_view, name="faculty_page")
+    path('faculty/', add_faculty_team_view, name="faculty_page"),
+    path('edit_faculty/<int:faculty_id>/', edit_faculty_view, name="edit_faculty_page"),
+    path('delete_faculty/<int:faculty_id>/', delete_faculty_view, name="delete_faculty_page")
 ]
