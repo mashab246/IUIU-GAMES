@@ -13,6 +13,7 @@ def add_faculty_team_view(request):
         if facultyteamform.is_valid():
             facultyteamform.save()
             message = "Form created successfully"
+        
     else:
         facultyteamform = FacultyTeamForm()
 
@@ -39,7 +40,7 @@ def add_player_view(request):
     else:
         player_form = PlayerForm()
 
-    players = PlayerForm.objects.all()
+    players = Player.objects.all()
 
     context = {
         'form': PlayerForm,
@@ -61,7 +62,7 @@ def add_venue_view(request):
     else:
         venue_form = VenueForm()
 
-    venues = VenueForm.objects.all()
+    venues = Venue.objects.all()
 
     context = {
         'form': VenueForm,
@@ -83,7 +84,7 @@ def add_match_view(request):
     else:
         match_form = MatchForm()
 
-    matches = MatchForm.objects.all()
+    matches = Match.objects.all()
 
     context = {
         'form': MatchForm,

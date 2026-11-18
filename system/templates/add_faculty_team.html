@@ -22,15 +22,15 @@
             <th>sportTeamm</th>
             <th>no_of_players</th>
         </tr>
+        {% for  facultyteam in facultyteams %}
         <tr>
-            {% for facultyteam in facultyteams %}
             <td>{{facultyteam.id}}</td>
-            <td>{{facultyteam.Faculty_name}}</td>
+            <td>{{facultyteam.faculty_name}}</td>
             <td>{{facultyteam.sport_type}}</td>
             <td>{{facultyteam.team_manager}}</td>
             <td>{{facultyteam.no_of_registered_players}}</td>
-            {% endfor %}
         </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
