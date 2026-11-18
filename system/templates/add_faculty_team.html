@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit">
+    </form>
+    {% if msg %}
+        {{msg}}
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>FacultyName</th>
+            <th>sportTeamm</th>
+            <th>no_of_players</th>
+        </tr>
+        <tr>
+            {% for facultyteam in facultyteams %}
+            <td>{{facultyteam.id}}</td>
+            <td>{{facultyteam.Faculty_name}}</td>
+            <td>{{facultyteam.sport_type}}</td>
+            <td>{{facultyteam.team_manager}}</td>
+            <td>{{facultyteam.no_of_registered_players}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

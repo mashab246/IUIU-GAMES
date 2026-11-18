@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from system.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('faculty/', add_faculty_team_view, name="faculty_page")
 ]

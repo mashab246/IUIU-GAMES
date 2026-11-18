@@ -9,13 +9,13 @@ class FacultyTeam(models.Model):
         ("Athletics","Athletics")
     ]
 
-    Faculty_name = models.CharField(max_length=100, unique=True)
+    Faculty_name = models.CharField(max_length=100)
     sport_type = models.CharField(max_length=100, choices=sports)
     team_manager = models.CharField(max_length=100)
     no_of_registered_players = models.PositiveBigIntegerField(verbose_name="Registered Players")
 
     def __str__(self):
-        return f"{self.Faculty_name} - {self.sport_type}"
+        return f"{self.faculty_name} - {self.sport_type}"
 
 
 class Player(models.Model):
@@ -110,7 +110,7 @@ class Match(models.Model):
         unique_together = ('venue', 'match_day', 'sport_type', 'venue_start_time', 'end_time')
 
     def __str__(self):
-        return f"{self.match_day} - {self.home_team} Vs {self.away_team} at {self.venue_start_time}"
+        return f"{self.home_team.faculty_name} vs {self.away_team.Faculty_name} on {self.match_day} by {self.assigned_offical}"
 
 
 class MatchResults(models.Model):
